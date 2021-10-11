@@ -99,12 +99,14 @@ export const APP = {
   TWILIO_PHONE_NUMBER: process.env.TWILIO_PHONE_NUMBER
 };
 
+
 export enum Model {
   AUTH_CODE = 'AuthCode',
   COMMENT = 'Comment',
   POST = 'Post',
   REACTION = 'Reaction',
-  USER = 'User'
+  USER = 'User',
+  ID = "ID"
 }
 
 export enum RouteMethod {
