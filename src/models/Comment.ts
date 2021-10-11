@@ -28,8 +28,19 @@ export type CommentDocument = Document<{}, {}, IComment> & IComment;
 const commentSchema: Schema<CommentDocument> = new Schema<CommentDocument>(
   {
     author: { ref: Model.USER, required: true, type: ID },
+
+    /**
+     * Arthor is required so it is true
+     */
+
     content: { required: true, type: String },
+    /**
+     * Conent is words so it is a string
+     */
     post: { ref: Model.POST, required: true, type: ID }
+    /**
+     * Post is required so it can be commented under so it is true
+     */
   },
   { timestamps: true }
 );
