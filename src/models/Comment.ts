@@ -30,16 +30,16 @@ const commentSchema: Schema<CommentDocument> = new Schema<CommentDocument>(
     author: { ref: Model.USER, required: true, type: ID },
 
     /**
-     * Arthor is required so it is true
+     * Aurthor is required so it's true
      */
 
     content: { required: true, type: String },
     /**
-     * Conent is words so it is a string
+     * Conent is words so it's a string
      */
     post: { ref: Model.POST, required: true, type: ID }
     /**
-     * Post is required so it can be commented under so it is true
+     * Post is required so it can be commented under so it's true
      */
   },
   { timestamps: true }
