@@ -6,11 +6,6 @@ import { BaseModel, ID } from '../utils/types';
 import Post, { PostDocument } from './Post';
 import User, { UserDocument } from './User';
 
-/**
- * TODO: (5.01)
- * - Read this interface.
- * - Delete this comment once you've done so.
- */
 interface IComment extends BaseModel {
   /**
    * User that is associated with the creation of the comment.
@@ -32,14 +27,20 @@ export type CommentDocument = Document<{}, {}, IComment> & IComment;
 
 const commentSchema: Schema<CommentDocument> = new Schema<CommentDocument>(
   {
+    author: { ref: Model.USER, required: true, type: ID },
+
     /**
-     * (5.02) TODO:
-     * - Create the schema for the Comments that we'll save in the database using
-     * the interface above as a reference.
-     * - Delete this comment and the example field.
-     * - Add comment(s) to explain your work.
+     * Aurthor is required so it's true
      */
-    exampleField: { ref: Model.USER, required: false, type: ID, unique: false }
+
+    content: { required: true, type: String },
+    /**
+     * Conent is words so it's a string
+     */
+    post: { ref: Model.POST, required: true, type: ID }
+    /**
+     * Post is required so it can be commented under so it's true
+     */
   },
   { timestamps: true }
 );

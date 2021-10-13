@@ -104,7 +104,8 @@ export enum Model {
   COMMENT = 'Comment',
   POST = 'Post',
   REACTION = 'Reaction',
-  USER = 'User'
+  USER = 'User',
+  ID = 'ID'
 }
 
 export enum RouteMethod {
