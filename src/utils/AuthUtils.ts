@@ -8,13 +8,17 @@ import { APP } from './constants';
  * all 0's.
  */
 const generateOTP = (): number => {
-  /**
-   * (1.02) TODO:
-   * - Implement this function.
-   * - Make sure tall the tests pass.
-   * - Delete this comment.
-   */
-  return 123456;
+  // thinking something like math.random which would use in java but need diff 
+  // syntax here 
+  const randomNumber: number = Math.random();
+
+  // multiply by a big number 700000
+
+  const sixDigs: number = randomNumber*900000;
+
+  const sixDigWhole: number = Math.floor(sixDigs);
+
+  return sixDigWhole + 100000;
 };
 
 /**
