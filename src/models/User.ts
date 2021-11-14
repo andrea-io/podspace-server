@@ -69,19 +69,18 @@ export type UserDocument = Document<{}, {}, IUser> &
 const userSchema: Schema<UserDocument> = new Schema<UserDocument>(
   {
     // based off the question marks above
-    email: { required: false, sparse: true, type: String, unique: true},
-    firstName: {reuqired: false, type: String},
-    instagramUrl: { required: false, type: String},
-    lastName: { required: false, type: String},
-    linkedInUrl: { required: false, type: String},
-    phoneNumber: { required: true, type: String, unique: true},
-    profilePictureKey: { required: false, type: String},
-    profilePictureUrl: { required: false, type: String},
+    email: { required: false, sparse: true, type: String, unique: true },
+    firstName: { reuqired: false, type: String },
+    instagramUrl: { required: false, type: String },
+    lastName: { required: false, type: String },
+    linkedInUrl: { required: false, type: String },
+    phoneNumber: { required: true, type: String, unique: true },
+    profilePictureKey: { required: false, type: String },
 
     // We shouldn't be returning the refreshToken when fetching a user from
     // the database, since that is sensitive information.
     refreshToken: { required: false, select: false, type: String },
-    twitterUrl: { required: false, type: String}
+    twitterUrl: { required: false, type: String }
   },
   {
     timestamps: true,
@@ -94,7 +93,6 @@ type TokenArgs = {
   date: number;
   id: string;
 };
-
 
 /**
  * Creates and returns a new access and refresh token for the user. It also

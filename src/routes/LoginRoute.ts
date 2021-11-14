@@ -36,7 +36,9 @@ export default class LoginRoute extends BaseRoute<boolean> {
      * field in the body is a valid US phone number.
      */
     return [
-      body('phoneNumber').isMobilePhone('en-US').withMessage('Phone number invalid.')
+      body('phoneNumber')
+        .isMobilePhone('en-US')
+        .withMessage('Phone number invalid.')
     ];
   }
 
@@ -58,28 +60,27 @@ export default class LoginRoute extends BaseRoute<boolean> {
      * - Send a text to the user with the code.
      */
     // TODO: (7.03) Get the phone number from the request body.
-    const {phoneNumber} = req.body;
+    const { phoneNumber } = req.body;
 
     // TODO: (7.03) We should delete all codes that  previously existed for the
     // user.
-    await AuthCode.deleteMany({phoneNumber});
+    await AuthCode.deleteMany({ phoneNumber });
 
     // TODO: (7.03) Create a new AuthCode document in the database.
-     const authCode: authCodeDoc = await AuthCode.create({phoneNumber});
+    const authCode: AuthCodeDocument = await AuthCode.create({ phoneNumber });
 
     // TODO: (7.03) Send a text to the user.
     const textSentCheck: boolean = await TextService.sendText({
-      message: 'Your one time unique code: ${authCode.value}',
+      message: `Your one time unique code: ${authCode.value}`,
       to: phoneNumber
-
     });
 
     // TODO: (7.03) If the text was not sent, throw a new RouteError with status
     // code 500.
 
-    if(!textSentCheck){
+    if (!textSentCheck) {
       throw new RouteError({
-        message: "Failure sending: one time code text, but try again!",
+        message: 'Failure sending: one time code text, but try again!',
         statusCode: 500
       });
     }

@@ -6,7 +6,7 @@ import User, { UserDocument } from './User';
  * - Remove the ".skip" from the following function.
  * - Go to your terminal and run the following command:
  *        npm run test User
- * 
+ *
  */
 describe('Model: User', () => {
   test('User.renewToken() - Should update the refresh token.', async () => {
